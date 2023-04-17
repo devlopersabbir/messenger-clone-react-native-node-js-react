@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "web",
+    "slug": "web",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "permissions": [
+      "CAMERA",
+      "photosPermission",
+      "cameraPermission",
+      "microphonePermission",
+      "NSMicrophoneUsageDescription",
+      "NSPhotoLibraryUsageDescription",
+      "NSCameraUsageDescription",
+      "READ_CALENDAR",
+      "WRITE_CALENDAR",
+      "READ_CONTACTS",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_EXTERNAL_STORAGE"
+    ],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.mdsadikulislamsabbir.web"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3cc0feae-66a6-4bfe-bbad-6192855f8a1e"
+      }
+    }
+  }
+}
