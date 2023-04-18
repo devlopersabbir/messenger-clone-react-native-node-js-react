@@ -1,4 +1,4 @@
-import { Box, Text, HStack, Flex, Avatar } from "native-base";
+import { Box, Text, HStack, Flex, Avatar, Image } from "native-base";
 import React, { useEffect } from "react";
 import { IChat, IMessage, IUser } from "../../utils/interfaces/interface";
 import { baseURLMac } from "../../utils/axios/axios";
@@ -8,17 +8,25 @@ interface IMessageProps {
   requestUser?: IUser;
   chat?: IChat;
   scrollToBottom: () => void;
+  isTyping?: boolean;
 }
 const Message: React.FC<IMessageProps> = ({
   message,
   requestUser,
   chat,
   scrollToBottom,
+  // isTyping,
 }) => {
+  const typing = true;
   useEffect(() => {
     scrollToBottom();
   }, [message, chat]);
-  return (
+
+  return message?.image ? (
+    <>
+      <Image w="70%" h="140px" src={message?.image} alt={message?.userUuid} />
+    </>
+  ) : (
     <>
       <HStack
         w="full"

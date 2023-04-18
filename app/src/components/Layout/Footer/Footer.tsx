@@ -1,16 +1,19 @@
-import { HStack } from "native-base";
+import { HStack, useColorMode } from "native-base";
 import React from "react";
 import { FooterItem } from "../../../utils/Data";
 import { TFooterItem } from "../../../utils/Types";
 import CommonButton from "../../common/Home/CommonButton";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const Footer = () => {
+  const { colorMode } = useColorMode();
+  const { bottom } = useSafeAreaInsets();
   return (
     <HStack
-      safeAreaBottom
-      py={5}
+      pt={4}
+      pb={bottom}
       px={12}
-      bg="white"
+      bg={colorMode === "dark" ? "gray.600" : "white"}
       justifyContent="space-between"
       style={{
         shadowColor: "rgba(196,196,196)",

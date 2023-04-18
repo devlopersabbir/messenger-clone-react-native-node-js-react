@@ -44,8 +44,9 @@ export class SocketServer {
 
     // send message
     socket.on("chat_message", async (payload, cb) => {
+      const { chatUuid, text, image } = payload;
       const chat = await Chat.findOneOrFail({
-        where: { uuid: payload.chatUuid },
+        where: { uuid: chatUuid },
         relations: { users: true },
       });
       if (!chat) return console.log("chat not found");
@@ -57,7 +58,8 @@ export class SocketServer {
       if (!user) return console.log("user not found!");
       try {
         const message = Messages.create({
-          text: payload.text,
+          text,
+          image,
           chatUuid: chat.uuid,
           userUuid: user.uuid,
           user,
@@ -105,9 +107,16 @@ export class SocketServer {
       const chatMember = chat?.users?.filter(
         (m: any) => m.uuid !== socket.data?.users?.uuid
       );
+      // chatMember?.map((user: any) => {
+      //   socket.broadcast.to(user.uuid).emit("typing", { typing: isTyping });
+      // });
       chatMember?.map((user: any) => {
-        socket.broadcast.to(user.uuid).emit("typing", { typing: isTyping });
+        // emit to all members except the user who is typing
+        if (user.uuid !== chat?.typingUser) {
+          socket.broadcast.to(user.uuid).emit("typing", { typing: isTyping });
+        }
       });
+      // socket.emit("typing", { typing: isTyping });
     });
 
     // when your leave

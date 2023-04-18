@@ -6,6 +6,7 @@ import {
   Icon,
   Pressable,
   Text,
+  useColorMode,
   VStack,
 } from "native-base";
 import React from "react";
@@ -13,6 +14,7 @@ import { IChat, IUser } from "../../utils/interfaces/interface";
 import { useSelector } from "react-redux";
 import GoBack from "../common/Back/GoBack";
 import { baseURLMac } from "../../utils/axios/axios";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface IChatHeaderProps {
   navigation: any;
@@ -23,6 +25,8 @@ const Header: React.FC<IChatHeaderProps> = ({ navigation, chat }) => {
   const { user: requestUser } = useSelector(
     ({ authReducer }: any) => authReducer
   );
+  const { colorMode } = useColorMode();
+  const { top } = useSafeAreaInsets();
   return (
     <>
       {chat?.users &&
@@ -30,12 +34,12 @@ const Header: React.FC<IChatHeaderProps> = ({ navigation, chat }) => {
           if (user?.username !== requestUser?.username) {
             return (
               <HStack
-                safeAreaTop={true}
+                pt={top}
+                pb={4}
                 key={index}
                 justifyContent="flex-start"
                 px={4}
-                bg="gray.200"
-                h={"32"}
+                bg={colorMode === "dark" ? "gray.600" : "white"}
                 rounded="3xl"
                 borderTopLeftRadius="0"
                 borderTopRightRadius="0"
@@ -51,7 +55,6 @@ const Header: React.FC<IChatHeaderProps> = ({ navigation, chat }) => {
                 >
                   <HStack
                     space={3}
-                    flex={1}
                     overflow="hidden"
                     w="full"
                     alignItems="center"
@@ -70,13 +73,17 @@ const Header: React.FC<IChatHeaderProps> = ({ navigation, chat }) => {
                       <Heading
                         fontSize="19px"
                         fontWeight="600"
-                        color="gray.500"
+                        color={colorMode === "dark" ? "white" : "gray.600"}
                       >
                         {user?.name}
                       </Heading>
                       <Text
                         color={`${
-                          user?.status === "ONLINE" ? "green.500" : "gray.500"
+                          user?.status === "ONLINE"
+                            ? "green.500"
+                            : `${
+                                colorMode === "dark" ? "gray.300" : "gray.500"
+                              }`
                         }`}
                         fontSize="16px"
                         fontWeight="500"

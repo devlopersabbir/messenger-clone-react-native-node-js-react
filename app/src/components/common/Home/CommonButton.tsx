@@ -1,36 +1,43 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Button, Center, Text } from "native-base";
+import { Button, Center, Icon, Text, useColorMode } from "native-base";
 import React from "react";
 import { TFooterItem } from "../../../utils/Types";
-import { useDispatch } from "react-redux";
-import { logout } from "../../../redux/slice/authSlice";
-import useChatUpdate from "../../../hooks/useChatUpdate";
+import { useNavigation } from "@react-navigation/core";
 
 interface ICommonButton {
   item: TFooterItem;
 }
 const CommonButton: React.FC<ICommonButton> = ({ item }) => {
-  const dispatch = useDispatch();
-  const { unsetAllChat, unsetSelectedChat } = useChatUpdate();
-  const logOut = (name: string) => {
-    if (name === "More") {
-      dispatch(logout());
-      unsetAllChat();
-      unsetSelectedChat();
+  const { navigate }: any = useNavigation();
+  const { colorMode } = useColorMode();
+
+  const routeNavigator = (name: string) => {
+    switch (name) {
+      case "Chat":
+        navigate("Home");
+        break;
+      case "Calls":
+        navigate("Calls");
+        break;
+      case "Settings":
+        navigate("Settings");
+        break;
+      default:
+        break;
     }
   };
   return (
-    <Button variant="unstyled" p={0} onPress={() => logOut(item?.name)}>
+    <Button variant="unstyled" p={0} onPress={() => routeNavigator(item?.name)}>
       <Center>
-        <MaterialIcons
-          name={item?.iconName}
-          color={`${item?.name === "Chat" ? "blue" : "black"}`}
+        <Icon
+          color={colorMode === "dark" ? "white" : "gray.900"}
           size={28}
+          as={<MaterialIcons name={item?.iconName} />}
         />
         <Text
+          color={colorMode === "dark" ? "white" : "gray.900"}
           fontWeight="500"
           fontSize="16px"
-          color={`${item?.name === "Chat" ? "blue.600" : "gray.900"}`}
         >
           {item?.name}
         </Text>

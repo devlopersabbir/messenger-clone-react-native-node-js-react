@@ -12,13 +12,8 @@ export const FooterItem: TFooterItem[] = [
   },
   {
     id: 2,
-    name: "Groups",
-    iconName: "groups",
-  },
-  {
-    id: 3,
-    name: "More",
-    iconName: "more",
+    name: "Settings",
+    iconName: "settings",
   },
 ];
 

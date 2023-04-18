@@ -8,6 +8,8 @@ export type RootStackParamsList = {
   Chat?: undefined;
   Details?: undefined;
   Auth?: undefined;
+  Settings?: undefined;
+  Calls?: undefined;
 };
 export type WelcomeScreen = NativeStackScreenProps<
   RootStackParamsList,
@@ -20,6 +22,11 @@ export type SingUpScreen = NativeStackScreenProps<
 export type LoginScreen = NativeStackScreenProps<RootStackParamsList, "Login">;
 export type HomeScreen = NativeStackScreenProps<RootStackParamsList, "Home">;
 export type ChatScreen = NativeStackScreenProps<RootStackParamsList, "Chat">;
+export type SettingScreen = NativeStackScreenProps<
+  RootStackParamsList,
+  "Settings"
+>;
+export type CallScreen = NativeStackScreenProps<RootStackParamsList, "Calls">;
 export type DetailsScreen = NativeStackScreenProps<
   RootStackParamsList,
   "Details"

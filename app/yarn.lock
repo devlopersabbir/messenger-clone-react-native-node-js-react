@@ -1071,39 +1071,6 @@
     deepmerge "^3.2.0"
     hoist-non-react-statics "^3.3.0"
 
-"@cloudinary/html@^1.11.2":
-  version "1.11.2"
-  resolved "https://registry.npmjs.org/@cloudinary/html/-/html-1.11.2.tgz"
-  integrity sha512-IibBZliI7MOK3dxvz0WlsEyTIsqZhY3SiCBQM0CNwCKxn3N1TO8OgetfU26Now1lJbdoF5JQ8S7Cn6ZWNuU1KA==
-  dependencies:
-    "@types/lodash.clonedeep" "^4.5.6"
-    "@types/lodash.debounce" "^4.0.6"
-    "@types/node" "^14.14.10"
-    lodash.clonedeep "^4.5.0"
-    lodash.debounce "^4.0.8"
-    typescript "^4.1.2"
-
-"@cloudinary/react@^1.11.2":
-  version "1.11.2"
-  resolved "https://registry.npmjs.org/@cloudinary/react/-/react-1.11.2.tgz"
-  integrity sha512-ZnVthMW7TExLMPmyven4N7EVr2oX2yZqnHn6EHBlni9iM0AZd6qtR8R5/SscxNLNwgBieWuvmejUlUT4LqPpMg==
-  dependencies:
-    "@cloudinary/html" "^1.11.2"
-
-"@cloudinary/transformation-builder-sdk@^1.2.7":
-  version "1.2.7"
-  resolved "https://registry.npmjs.org/@cloudinary/transformation-builder-sdk/-/transformation-builder-sdk-1.2.7.tgz"
-  integrity sha512-Q1fhw37BXXmN6/BCxdnw3OUJ6aAy/zpDWH5t+xIwmG5GtYUYMZqOjvdOkOhWBmus9ptq9znuGsYn8h5vtSjT+w==
-  dependencies:
-    "@cloudinary/url-gen" "^1.7.0"
-
-"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.9.2":
-  version "1.9.2"
-  resolved "https://registry.npmjs.org/@cloudinary/url-gen/-/url-gen-1.9.2.tgz"
-  integrity sha512-LFL79Galcj8WZaXW6QOOt5LQVkioQdH7DR7blYcU9Zi0ae1y0L4Ujmr69RsUNshCNy/EdVAg0aVG/jjqKDnJsg==
-  dependencies:
-    "@cloudinary/transformation-builder-sdk" "^1.2.7"
-
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
   resolved "https://registry.npmjs.org/@expo/bunyan/-/bunyan-4.0.0.tgz"
@@ -2750,39 +2717,29 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/lodash.clonedeep@^4.5.6":
-  version "4.5.7"
-  resolved "https://registry.npmjs.org/@types/lodash.clonedeep/-/lodash.clonedeep-4.5.7.tgz"
-  integrity sha512-ccNqkPptFIXrpVqUECi60/DFxjNKsfoQxSQsgcBJCX/fuX1wgyQieojkcWH/KpE3xzLoWN/2k+ZeGqIN3paSvw==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash.debounce@^4.0.6":
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
-  integrity sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash@*":
-  version "4.14.192"
-  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.192.tgz"
-  integrity sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==
-
 "@types/node@*":
   version "18.15.5"
   resolved "https://registry.npmjs.org/@types/node/-/node-18.15.5.tgz"
   integrity sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==
 
-"@types/node@^14.14.10":
-  version "14.18.41"
-  resolved "https://registry.npmjs.org/@types/node/-/node-14.18.41.tgz"
-  integrity sha512-2cfHr8AsUjKx6u4Q+d2eqK51z8+HueoumCQGCKVt95y/yGG4uajOuCANSnE20mbLw94h3tMcddIJ8nYkTu2mFw==
-
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
+
+"@types/react-native-typing-animation@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-typing-animation/-/react-native-typing-animation-0.1.0.tgz#c5b7c8809ec37215449c5b6acbc286650788fb20"
+  integrity sha512-7r9fCMprJ/CJ0yFxBpBpR2ZysSQTrrZwAW4E60gHpYuDLsjBz5qvKu1OKrnbOgboKoGfjIPQXcNrA6nJr/V4Qg==
+  dependencies:
+    "@types/react-native" "*"
+
+"@types/react-native@*":
+  version "0.71.6"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.71.6.tgz#bf0fc6a69bf0c2933c089dfb19fc182b09cb7790"
+  integrity sha512-eCqEZ+GhW9L9o6yVoPqCCAq8Sbd6liaKlh6WviD0X7O035NEe7VQ+q9KXYL+mhyZrLI5sbX7f3G973gG6fuiyQ==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react@*", "@types/react@~18.0.14":
   version "18.0.28"
@@ -6804,6 +6761,11 @@ react-async-hook@3.6.1:
   resolved "https://registry.npmjs.org/react-async-hook/-/react-async-hook-3.6.1.tgz"
   integrity sha512-YWBB2feVQF79t5u2raMPHlZ8975Jds+guCvkWVC4kRLDlSCouLsYpQm4DGSqPeHvoHYVVcDfqNayLZAXQmnxnw==
 
+react-content-loader@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-6.2.1.tgz#8feb733c2d2495002e1b216f13707f2b5f2a8ead"
+  integrity sha512-6ONbFX+Hi3SHuP66JB8CPvJn372pj+qwltJV0J8z/8MFrq98I1cbFdZuhDWeQXu3CFxiiDTXJn7DFxx2ZvrO7g==
+
 react-devtools-core@^4.26.1:
   version "4.27.3"
   resolved "https://registry.npmjs.org/react-devtools-core/-/react-devtools-core-4.27.3.tgz"
@@ -6859,14 +6821,14 @@ react-native-gradle-plugin@^0.71.17:
   resolved "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.17.tgz"
   integrity sha512-OXXYgpISEqERwjSlaCiaQY6cTY5CH6j73gdkWpK0hedxtiWMWgH+i5TOi4hIGYitm9kQBeyDu+wim9fA8ROFJA==
 
-react-native-image-picker@^5.3.1:
-  version "5.3.1"
-  resolved "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-5.3.1.tgz"
-  integrity sha512-zRCjtlE3KOeaWDM8gXzTwXfvo3ZeF2XMkHceU7CVCtKRleKxna/E4XWIPu/lXO2qlMdnSx1WvfPSbqzAX0qxpA==
+react-native-lightbox-v2@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/react-native-lightbox-v2/-/react-native-lightbox-v2-0.9.0.tgz#b97be4d892ebb959069c451948b11da390bc46d8"
+  integrity sha512-Fc5VFHFj2vokS+OegyTsANKb1CYoUlOtAv+EBH5wtpJn1b5cey6jVXH7136G5+8OC9JmKWSgKHc5thFwOoZTUg==
 
 react-native-safe-area-context@4.5.0:
   version "4.5.0"
-  resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.5.0.tgz#9208313236e8f49e1920ac1e2a2c975f03aed284"
   integrity sha512-0WORnk9SkREGUg2V7jHZbuN5x4vcxj/1B0QOcXJjdYWrzZHgLcUzYWWIUecUPJh747Mwjt/42RZDOaFn3L8kPQ==
 
 react-native-screens@~3.20.0:
@@ -6879,7 +6841,7 @@ react-native-screens@~3.20.0:
 
 react-native-svg@13.4.0:
   version "13.4.0"
-  resolved "https://registry.npmjs.org/react-native-svg/-/react-native-svg-13.4.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-13.4.0.tgz#82399ba0956c454144618aa581e2d748dd3f010a"
   integrity sha512-B3TwK+H0+JuRhYPzF21AgqMt4fjhCwDZ9QUtwNstT5XcslJBXC0FoTkdZo8IEb1Sv4suSqhZwlAY6lwOv3tHag==
   dependencies:
     css-select "^5.1.0"
@@ -6889,6 +6851,11 @@ react-native-toast-notifications@^3.3.1:
   version "3.3.1"
   resolved "https://registry.npmjs.org/react-native-toast-notifications/-/react-native-toast-notifications-3.3.1.tgz"
   integrity sha512-yc1Q2nOdIYvAf0GAIlmg8q42hiwpEHnLxkxJ6P+tN6jpcKZ1qzMXlgnmNdyF9cm9VOyHQexEP8952IKNAv1Olw==
+
+react-native-typing-animation@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/react-native-typing-animation/-/react-native-typing-animation-0.1.7.tgz#8f2cf08d9400ae543a110292eb7d71523dda5528"
+  integrity sha512-4H3rF9M+I2yAZpYJcY0Mb29TXkn98QK12rrKSY6LZj1BQD9NNmRZuNXzwX4XHapsIz+N/J8M3p27FOQPbfzqeg==
 
 react-native@0.71.6:
   version "0.71.6"
@@ -7200,11 +7167,6 @@ rimraf@~2.6.2:
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
   dependencies:
     glob "^7.1.3"
-
-rn-emoji-picker@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.npmjs.org/rn-emoji-picker/-/rn-emoji-picker-1.1.6.tgz"
-  integrity sha512-131WCwJ/KsH/m4Z35VOVO80q3RrbItPsve15hdSn7EHLLmAFgp5koxkfRusvjc5Z5wLeF8Bw5EJT7RKkBWou0w==
 
 run-parallel@^1.1.9:
   version "1.2.0"
@@ -7947,7 +7909,7 @@ type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@^4.1.2, typescript@^4.9.4:
+typescript@^4.9.4:
   version "4.9.5"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==

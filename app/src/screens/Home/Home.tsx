@@ -1,4 +1,11 @@
-import { Divider, Flex, ScrollView, Text, VStack } from "native-base";
+import {
+  Divider,
+  Flex,
+  ScrollView,
+  Text,
+  VStack,
+  useColorMode,
+} from "native-base";
 import React, { useEffect, useState } from "react";
 import { Dimensions } from "react-native";
 import Contact from "../../components/Home/Contact";
@@ -10,14 +17,15 @@ import useAxios from "../../hooks/useAxios";
 import useChatUpdate from "../../hooks/useChatUpdate";
 import { IChat } from "../../utils/interfaces/interface";
 import { RefreshControl } from "react-native";
-import Loading from "../../components/common/Home/Loader/Loading";
 import ErrorMessage from "../../components/common/Home/Loader/ErrorMessage";
 import { useToast } from "react-native-toast-notifications";
+import HomePageLoader from "../../components/Loader/Home";
 
 const Home = ({ navigation }: HomeScreen) => {
   const { chat: chatReducer } = useSelector(
     ({ chatReducer }: any) => chatReducer
   );
+  const { colorMode } = useColorMode();
   const { setAllChat, chatState } = useChatUpdate();
   const axios = useAxios();
   const toast = useToast();
@@ -27,34 +35,33 @@ const Home = ({ navigation }: HomeScreen) => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
   // get all chat / contact
+  const getAllUser = async () => {
+    setLoading(true);
+    try {
+      const { data }: any = await axios.get("/api/v1/chats/get-all");
+      setAllChat(data);
+      setLoading(false);
+    } catch (error: any) {
+      const mess = error?.response?.data;
+      if (!error || !error?.response) {
+        return <Text color="red.400">Server error!</Text>;
+      }
+      setError(true);
+      toast.show(mess?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
     setScreenHeight(Dimensions.get("window").height);
-
-    const getAllUser = async () => {
-      setLoading(true);
-      try {
-        const { data }: any = await axios.get("/api/v1/chats/get-all");
-        setAllChat(data);
-        setLoading(false);
-      } catch (error: any) {
-        const mess = error?.response?.data;
-        if (!error || !error?.response) {
-          return <Text color="red.400">Server error!</Text>;
-        }
-        setError(true);
-        toast.show(mess?.message);
-      } finally {
-        setLoading(false);
-      }
-    };
     getAllUser();
   }, [screenHeight]);
 
   const onRefresh = () => {
-    console.log("refresh");
+    getAllUser();
   };
   return (
-    <Flex flex={1}>
+    <Flex flex={1} bg={colorMode === "dark" ? "gray.900" : "white"}>
       {/* topbar start */}
       <Topbar navigation={navigation} />
       {/* topbar end */}
@@ -67,7 +74,7 @@ const Home = ({ navigation }: HomeScreen) => {
         showsVerticalScrollIndicator={false}
       >
         {loading ? (
-          <Loading />
+          <HomePageLoader />
         ) : error ? (
           <ErrorMessage message="You have not chat yet!" />
         ) : (

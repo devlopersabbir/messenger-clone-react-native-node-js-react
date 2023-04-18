@@ -9,6 +9,7 @@ import {
   Pressable,
   Spinner,
   Text,
+  useColorMode,
   View,
   VStack,
 } from "native-base";
@@ -21,6 +22,7 @@ import { useToast } from "react-native-toast-notifications";
 
 const Singup: React.FC<SingUpScreen> = ({ navigation }) => {
   const toast = useToast();
+  const { colorMode } = useColorMode();
   const { data: imageData, success, error, upload } = useFileUpload();
   const [loading, setLoading] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
@@ -79,7 +81,7 @@ const Singup: React.FC<SingUpScreen> = ({ navigation }) => {
     }
   };
   return (
-    <View>
+    <View bg={colorMode === "dark" ? "gray.900" : "white"}>
       <Center h="full" w="full" px={10}>
         <VStack space={3} w="full" alignItems="center">
           <Box rounded="full" position="relative">

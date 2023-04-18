@@ -1,4 +1,7 @@
-import { ScrollView, Text, useToast, View, VStack } from "native-base";
+import { Flex, Text, useColorMode, useToast, VStack } from "native-base";
+import { TypingAnimation } from "react-native-typing-animation";
+
+import { ScrollView } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import Message from "../../components/Chat/Message";
 import TypeBox from "../../components/Chat/TypeBox";
@@ -18,6 +21,7 @@ const Chat = ({ navigation }: ChatScreen) => {
     ({ authReducer }: any) => authReducer
   );
   const toast = useToast();
+  const { colorMode } = useColorMode();
   const axios = useAxios();
   const socket = useSocket();
   const { chatState } = useChatUpdate();
@@ -28,13 +32,19 @@ const Chat = ({ navigation }: ChatScreen) => {
   } = useMessage();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const viewRef = useRef<HTMLDivElement>(null);
+  const [isTyping, setTyping] = useState<boolean>(false);
+  const viewRef = useRef<any>(null);
 
+  // scrollTobottom function
   const scrollTobottom = () => {
-    viewRef.current?.scrollTo({
-      top: viewRef.current?.scrollHeight,
-      behavior: "smooth",
-    });
+    viewRef.current?.scrollToEnd({ animated: true, behavior: "smooth" });
+
+    // if (viewRef.current) {
+    //   viewRef.current?.scrollTo({
+    //     left: viewRef.current?.scrollHeight,
+    //     behavior: "smooth",
+    //   });
+    // }
   };
   // get all message from db
   useEffect(() => {
@@ -73,17 +83,37 @@ const Chat = ({ navigation }: ChatScreen) => {
     };
   }, [socket]);
 
+  // when user typeing
+  useEffect(() => {
+    socket.on("typing", ({ typing }) => {
+      setTyping(typing as boolean);
+      // console.log(typing);
+    });
+    return () => {
+      socket?.off("typing");
+    };
+  }, [socket]);
+
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
 
   return (
-    <View flex={1} bg="white">
+    <Flex
+      flex={1}
+      justifyContent="space-between"
+      bg={colorMode === "dark" ? "gray.900" : "gray.100"}
+    >
       <Header chat={chatState.selectedChat} navigation={navigation} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        bg="gray.100"
-        pt={4}
-        px={3}
+        style={{
+          overflow: "scroll",
+          paddingRight: 12,
+          paddingLeft: 12,
+          paddingBottom: 4,
+          paddingTop: 4,
+        }}
+        ref={viewRef}
       >
         <VStack space={2} w="full" pb={8}>
           {messageFromRedux?.message &&
@@ -96,13 +126,25 @@ const Chat = ({ navigation }: ChatScreen) => {
                 scrollToBottom={scrollTobottom}
               />
             ))}
+
+          {isTyping ? (
+            <TypingAnimation
+              dotColor={colorMode === "dark" ? "white" : "black"}
+              dotMargin={8}
+              dotAmplitude={5}
+              dotSpeed={0.2}
+              dotRadius={2.5}
+              dotX={12}
+              dotY={6}
+            />
+          ) : null}
         </VStack>
       </ScrollView>
       <TypeBox
         chat={chatState.selectedChat as IChat}
         scrollToBottom={scrollTobottom}
       />
-    </View>
+    </Flex>
   );
 };
 

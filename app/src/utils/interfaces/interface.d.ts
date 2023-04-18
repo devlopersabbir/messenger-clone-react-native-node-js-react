@@ -49,6 +49,7 @@ export interface IMessage {
   id?: number;
   uuid: string;
   text?: string;
+  image?: string;
   userUuid?: string;
   createdAt?: string;
   users?: IUser | undefined;

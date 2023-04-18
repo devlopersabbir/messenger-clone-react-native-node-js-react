@@ -15,6 +15,7 @@ import {
   Flex,
   Spinner,
   Divider,
+  useColorMode,
 } from "native-base";
 import React, { useState } from "react";
 import useAxios from "../../hooks/useAxios";
@@ -23,6 +24,7 @@ import { useToast } from "react-native-toast-notifications";
 import { useSelector } from "react-redux";
 import useChatUpdate from "../../hooks/useChatUpdate";
 import { baseURLMac } from "../../utils/axios/axios";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface ITopbarProps {
   navigation?: any;
@@ -31,8 +33,10 @@ const Topbar: React.FC<ITopbarProps> = ({ navigation }) => {
   const { user: requestUser } = useSelector(
     ({ authReducer }: any) => authReducer
   );
+  const { colorMode } = useColorMode();
   const axios = useAxios();
   const toast = useToast();
+  const insets = useSafeAreaInsets();
   const { chatState, addNewChat, setAllChat, setSelectedChat } =
     useChatUpdate();
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -96,9 +100,9 @@ const Topbar: React.FC<ITopbarProps> = ({ navigation }) => {
       <VStack
         space={3}
         px={3}
-        safeAreaTop={true}
         pb={4}
-        bg="white"
+        pt={`${insets?.top}`}
+        bg={colorMode === "dark" ? "gray.600" : "gray.100"}
         borderRadius="3xl"
       >
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -149,7 +153,13 @@ const Topbar: React.FC<ITopbarProps> = ({ navigation }) => {
           </HStack>
         </ScrollView>
       </VStack>
-      <Modal isOpen={showModal} onClose={() => setShowModal(false)} size="lg">
+      <Modal
+        colorScheme="blueGray"
+        // bg={colorMode === "dark" ? "blueGray.600" : "white"}
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        size="lg"
+      >
         <Modal.Content>
           <Modal.Body>
             <Input

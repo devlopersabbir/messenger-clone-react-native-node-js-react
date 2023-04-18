@@ -9,6 +9,9 @@ export class Messages extends Modal {
   @Column()
   text: string;
 
+  @Column({ nullable: true })
+  image?: string;
+
   @Column()
   userUuid?: string;
 
