@@ -35,7 +35,7 @@
   },
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "start": "node build/index.js",
+    "start": "node build/server.js",
     "build": "tsc",
     "typeorm": "typeorm-ts-node-commonjs"
   }
