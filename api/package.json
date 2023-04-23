@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "build/server.js",
+  "main": "src/server.ts",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.0",
