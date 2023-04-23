@@ -8,11 +8,11 @@ import { Gallary } from "./entity/Gallary/Gallary";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
+  host: "dpg-ch2pa43h4hsum403h680-a",
   port: 5432,
-  username: "sabbir",
-  password: undefined,
-  database: "vite-chat-app",
+  username: "devlopersabbir",
+  password: "5z9hWFoCBvvTX6YzSja1ZyhL2zvQs3WM",
+  database: "devlopersabbir_chat_app",
   synchronize: true,
   logging: false,
   entities: [User, Chat, Messages, Call, Gallary],
