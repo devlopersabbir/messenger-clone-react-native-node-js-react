@@ -8,12 +8,12 @@ import { Gallary } from "./entity/Gallary/Gallary";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "dpg-ch2pa43h4hsum403h680-a",
+  host: "localhost",
   port: 5432,
   username: "devlopersabbir",
   password: "5z9hWFoCBvvTX6YzSja1ZyhL2zvQs3WM",
   database: "devlopersabbir_chat_app",
   synchronize: true,
-  logging: false,
+  logging: true,
   entities: [User, Chat, Messages, Call, Gallary],
 });
