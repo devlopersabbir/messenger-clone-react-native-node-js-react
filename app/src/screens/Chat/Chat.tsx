@@ -58,6 +58,7 @@ const Chat = ({ navigation }: ChatScreen) => {
           data?.filter((mess: any) => {
             setMessageToRedux(mess);
           });
+        console.log(data);
         scrollTobottom();
       } catch (error: any) {
         console.log(error?.response?.data);

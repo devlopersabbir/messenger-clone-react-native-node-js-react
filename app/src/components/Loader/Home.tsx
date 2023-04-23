@@ -4,7 +4,7 @@ import ContentLoader, { Rect, Circle } from "react-content-loader/native";
 
 const HomePageLoader = () => {
   return (
-    <VStack space={0}>
+    <VStack my={0} py={3}>
       <MyLoader />
       <MyLoader />
       <MyLoader />

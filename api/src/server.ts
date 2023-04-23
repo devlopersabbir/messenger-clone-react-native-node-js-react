@@ -17,6 +17,7 @@ import routes from "./routes/root/root";
 import { AppDataSource } from "./data-source";
 import { IUser } from "./utils/interfaces/interfaces";
 import path from "path";
+import { logger, EPurpose } from "dev-http-logger";
 dotenv.config();
 
 declare module "express" {
@@ -28,7 +29,7 @@ declare module "express" {
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -37,6 +38,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(fileUpload());
+app.use(logger({ origin: true }));
 app.use("/", routes);
 app.use(
   bodyParser.urlencoded({
