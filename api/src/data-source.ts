@@ -8,12 +8,16 @@ import { Gallary } from "./entity/Gallary/Gallary";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "dpg-ch2pa43h4hsum403h680-a",
+  host: "ep-blue-pine-272939-pooler.us-west-2.postgres.vercel-storage.com",
+  // host: "localhost",
   port: 5432,
-  username: "devlopersabbir",
-  password: "5z9hWFoCBvvTX6YzSja1ZyhL2zvQs3WM",
-  database: "devlopersabbir_chat_app",
+  username: "default",
+  // username: "sabbir",
+  password: "mD0KdS8ubEBc",
+  // password: undefined,
+  database: "verceldb",
+  // database: "vite-chat-app",
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [User, Chat, Messages, Call, Gallary],
 });

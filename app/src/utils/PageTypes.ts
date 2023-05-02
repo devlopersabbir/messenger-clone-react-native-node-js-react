@@ -11,14 +11,17 @@ export type RootStackParamsList = {
   Settings?: undefined;
   Calls?: undefined;
 };
+
 export type WelcomeScreen = NativeStackScreenProps<
   RootStackParamsList,
   "Welcome"
 >;
+
 export type SingUpScreen = NativeStackScreenProps<
   RootStackParamsList,
   "Singup"
 >;
+
 export type LoginScreen = NativeStackScreenProps<RootStackParamsList, "Login">;
 export type HomeScreen = NativeStackScreenProps<RootStackParamsList, "Home">;
 export type ChatScreen = NativeStackScreenProps<RootStackParamsList, "Chat">;

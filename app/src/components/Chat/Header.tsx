@@ -48,9 +48,9 @@ const Header: React.FC<IChatHeaderProps> = ({ navigation, chat }) => {
                 <GoBack />
                 <Pressable
                   flex={1}
-                  onPress={
-                    () => console.log("pressed")
-                    // navigation.navigate("Details", { data: data as TMessage })
+                  onPress={() =>
+                    // console.log("============= pressed ============", user)
+                    navigation.navigate("Details", { user })
                   }
                 >
                   <HStack

@@ -1,6 +1,5 @@
 import { Flex, Text, useColorMode, useToast, VStack } from "native-base";
 import { TypingAnimation } from "react-native-typing-animation";
-
 import { ScrollView } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import Message from "../../components/Chat/Message";
@@ -58,7 +57,6 @@ const Chat = ({ navigation }: ChatScreen) => {
           data?.filter((mess: any) => {
             setMessageToRedux(mess);
           });
-        console.log(data);
         scrollTobottom();
       } catch (error: any) {
         console.log(error?.response?.data);
@@ -88,7 +86,6 @@ const Chat = ({ navigation }: ChatScreen) => {
   useEffect(() => {
     socket.on("typing", ({ typing }) => {
       setTyping(typing as boolean);
-      // console.log(typing);
     });
     return () => {
       socket?.off("typing");
